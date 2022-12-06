@@ -1,14 +1,14 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-// import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Header from "../components/template/Header";
+import Footer from "../components/template/Footer";
 
-import Home from "./pages/home";
-import Join from "./pages/Join";
-import Login from "./pages/Login";
-import User from "./pages/User";
-import Analysis from "./pages/Analysis";
-import Result from "./pages/Result";
+import Home from "./HomePage";
+import Join from "./Join";
+import Login from "./Login";
+import User from "./User";
+import Analysis from "./Analysis";
+import Result from "./Result";
 
 function Router(){
     return(
@@ -22,6 +22,7 @@ function Router(){
                 <Route path="/analysis" element={<Analysis />} />
                 <Route path="/result" element={<Result />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     );
 };

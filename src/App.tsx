@@ -4,7 +4,7 @@ import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { useRecoilValue } from 'recoil';
 
-import Router from './Router';
+import Router from './pages/Router';
 import { darkTheme, lightTheme } from './theme';
 import { isDarkMode } from './atoms';
 

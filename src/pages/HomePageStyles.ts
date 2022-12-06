@@ -1,12 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-
-import { useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import {isLoginPage} from '../atoms';
-
-const Main = styled.div`
+export const HomePageContainer = styled.div`
     width:90vw;
     height:90vh;
 
@@ -29,7 +24,8 @@ const Main = styled.div`
     }
 `;
 
-const StyledLink = styled(Link)`
+
+export const StyledLink = styled(Link)`
     text-decoration: none;
 
     &:focus, &:hover, &:visited, &:link, &:active {
@@ -52,21 +48,3 @@ const StyledLink = styled(Link)`
         border-radius:25px;
     }
 `;
-
-function Home() {
-    const setIsLoginPage = useSetRecoilState(isLoginPage);
-    setIsLoginPage(false);
-    
-    return(
-            <Main>
-                <span className="main-content">방금 먹은 식사의</span>
-                <span className="main-content">영양성분을</span>
-                <span className="main-content">분석해 드려요 </span>
-                <StyledLink to="/user">
-                    <span className="start-button">분석 시작하기!</span>
-                </StyledLink>
-            </Main>
-    )
-};
-
-export default Home;
