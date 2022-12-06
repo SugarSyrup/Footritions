@@ -1,10 +1,5 @@
 import React from "react";
-import { useSetRecoilState } from 'recoil';
-
-import {isLoginPage} from '../atoms';
-
 import {HomePageContainer, StyledLink} from "./HomePageStyles";
-
 
 function Home() {
     return(
