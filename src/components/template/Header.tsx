@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { isDarkMode, isLoginPage } from "../atoms";
+import { isDarkMode, isLoginPage } from "../../atoms";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
