@@ -119,7 +119,7 @@ function Login() {
     const handleValid = async ({username, password}: IForm) => {
         console.log("onCLick/");
         axios({
-            url: '/auth/login',
+            url: 'https://backend-server.fly.dev/auth/login',
             method:'post',
             data: {
                 username, password
