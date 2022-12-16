@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -13,9 +13,8 @@ import {Container, HeaderRight, Button} from './HeaderStyle';
 
 
 function Header() {
-    const _isLoginPage = useRecoilValue(isLoginPage);
-    const setIsDarkMode = useSetRecoilState(isDarkMode);
-    const _isDarkMode = useRecoilValue(isDarkMode);
+    const [_isLoginPage, setIsLoginPage] = useRecoilState(isLoginPage);
+    const [_isDarkMode, setIsDarkMode] = useRecoilState(isDarkMode);
     return(
             <Container>
                 <Link to="/"  style={{ textDecoration: 'none' }}>
@@ -26,11 +25,11 @@ function Header() {
                         <FontAwesomeIcon icon={ faSun } onClick={() => setIsDarkMode(prev => !prev)} /> 
                         : <FontAwesomeIcon icon={ faMoon } onClick={() => setIsDarkMode(prev => !prev)} />
                     }                    
-                    {/* {_isLoginPage? <></> : 
+                    {_isLoginPage? <></> : 
                     <Link to='/Login' style={{ textDecoration: 'none' }}>
                         <Button onClick={() => setIsLoginPage(true)}>Login</Button>
                     </Link>
-                    }                     */}
+                    }
                 </HeaderRight>
             </Container>
     )
