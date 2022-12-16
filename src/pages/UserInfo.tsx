@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import {Link} from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import {userData} from "../atoms";
 
@@ -89,20 +90,38 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const Result = () => {
-    const [gender, setGender] = useState("man");
+
+// useForm Type 정의
+enum GenderEnum {
+    female="female",
+    male = "male"
+}
+interface IFormInput {
+    gender: GenderEnum,
+    age: number,
+}
+
+const UserInfo = () => {
+    const [gender, setGender] = useState("");
     const [age, setAge] = useState(-1);
     const setUserData = useSetRecoilState(userData);
+
+    
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<IFormInput>();
+  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
+
+  console.log(watch("gender"))
+
     return (
         <Container>
             <span>사용자의 나이(0~64세까지)와 성별에 맞춰서</span>
             <span>필요로 하는 영양성분을 계산해 드립니다.</span> 
             <span>정확하고 상세한 계산을 위해 나이와 성별을 알려주세요.</span>
             <InputContainer>
-                <select value={gender} onChange={(event) => {
-                    setGender(event.target.value);
-                    console.log(event.target.value);
-                }}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    
+                </form>
+                <select value={gender} {...register("gender")}>
                     <option value="man">남</option>
                     <option value="woman">여</option>
                 </select>
@@ -124,4 +143,4 @@ const Result = () => {
     )
 }
 
-export default Result;
+export default UserInfo;
