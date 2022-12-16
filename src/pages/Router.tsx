@@ -6,7 +6,7 @@ import Footer from "../components/template/Footer";
 import Home from "./HomePage";
 import Join from "./Join";
 import Login from "./Login";
-import UserInfo from "./UserInfo";
+import UserInfo from "./UserInfoPage";
 import Analysis from "./Analysis";
 import Result from "./Result";
 
