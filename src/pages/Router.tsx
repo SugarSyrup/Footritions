@@ -6,7 +6,7 @@ import Footer from "../components/template/Footer";
 import Home from "./HomePage";
 import Join from "./Join";
 import Login from "./Login";
-import User from "./User";
+import UserInfo from "./UserInfoPage";
 import Analysis from "./Analysis";
 import Result from "./Result";
 
@@ -18,7 +18,7 @@ function Router(){
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
-                <Route path="/user" element={<User />} />
+                <Route path="/userinfo" element={<UserInfo />} />
                 <Route path="/analysis" element={<Analysis />} />
                 <Route path="/result" element={<Result />} />
             </Routes>
