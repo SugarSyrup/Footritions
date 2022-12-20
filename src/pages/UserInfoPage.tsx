@@ -3,6 +3,8 @@ import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Container, FormContainer, StyledSubmit } from './UserInfoStyles';
 
+import { ErrorMessage } from '@hookform/error-message';
+
 // useForm Type 정의
 enum GenderEnum {
     female="female",
@@ -15,7 +17,9 @@ interface IFormInput {
 
 const UserInfo = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = data => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log(data);
+  }
 
 //   console.log(watch("gender"))
 
@@ -29,9 +33,17 @@ const UserInfo = () => {
                     <option value="man">남</option>
                     <option value="woman">여</option>
                 </select>
-                <input type='number' {...register("age")} />
+                <input type='number' {...register("age", { required: true })} />
                 <StyledSubmit type='submit' />
             </FormContainer>
+            <ErrorMessage
+                errors={errors}
+                name="age"
+                render={({ messages }) => {
+                    window.alert("나이를 입력해야 합니다!");
+                    return <></>
+                  }}
+            />
             <img src="https://backend-prod.absurd.design/uploads/ckvtk1ad5000v14r0fokhdwuh.jpg" />
         </Container>
     )
