@@ -16,7 +16,7 @@ export const isLogined = atom({
 })
 
 export const userData = atom<{gender:string, age:number}>({
-    key:"userData",
+    key:"userData"
 })
 
 export const inputFoods = atom<{value:string, code:string, much:string}[]>({

@@ -5,6 +5,9 @@ import { Container, FormContainer, StyledSubmit } from './UserInfoStyles';
 
 import { ErrorMessage } from '@hookform/error-message';
 
+import { userData } from '../atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+
 // useForm Type 정의
 enum GenderEnum {
     female="female",
@@ -16,9 +19,13 @@ interface IFormInput {
 }
 
 const UserInfo = () => {
+  const setUserData = useSetRecoilState(userData);
+
+  console.log("Running...");
+  console.log(useRecoilValue(userData));
   const { register, handleSubmit, watch, formState: { errors } } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+    setUserData(data);
   }
 
 //   console.log(watch("gender"))
@@ -40,8 +47,7 @@ const UserInfo = () => {
                 errors={errors}
                 name="age"
                 render={({ messages }) => {
-                    window.alert("나이를 입력해야 합니다!");
-                    return <></>
+                    return <p>나이를 입력해 주세요!</p>
                   }}
             />
             <img src="https://backend-prod.absurd.design/uploads/ckvtk1ad5000v14r0fokhdwuh.jpg" />
